@@ -15,6 +15,7 @@ after_success:
   - docker build -t dfolke/multi-nginx ./nginx
   - docker build -t dfolke/multi-server ./server
   - docker build -t dfolke/multi-worker ./worker
+  - docker ps -a
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
