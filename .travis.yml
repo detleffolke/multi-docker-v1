@@ -15,7 +15,6 @@ after_success:
   - docker build -t dfolke/multi-nginx ./nginx
   - docker build -t dfolke/multi-server ./server
   - docker build -t dfolke/multi-worker ./worker
-  - docker ps -a
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
@@ -23,4 +22,17 @@ after_success:
   - docker push dfolke/multi-nginx
   - docker push dfolke/multi-server
   - docker push dfolke/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-904686510593"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
 
