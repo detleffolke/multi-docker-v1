@@ -3,28 +3,28 @@
   "containerDefinitions": [
     {
       "name": "client",
-      "image": "detleffolke/multi-client",
+      "image": "dfolke/multi-client",
       "hostname": "client",
       "essential": false,
       "memory": 128
     },
     {
       "name": "server",
-      "image": "detleffolke/multi-server",
+      "image": "dfolke/multi-server",
       "hostname": "api",
       "essential": false,
       "memory": 128
     },
     {
       "name": "worker",
-      "image": "detleffolke/multi-worker",
+      "image": "dfolke/multi-worker",
       "hostname": "worker",
       "essential": false,
       "memory": 128
     },
     {
       "name": "nginx",
-      "image": "detleffolke/multi-nginx",
+      "image": "dfolke/multi-nginx",
       "essential": true,
       "portMappings": [
         {
